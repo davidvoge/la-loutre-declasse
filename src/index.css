@@ -1,0 +1,20 @@
+html,
+body {
+  margin: 0;
+  background: #0e0b07;
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}

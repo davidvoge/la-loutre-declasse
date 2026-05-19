@@ -1,0 +1,8 @@
+node_modules
+dist
+design
+loutre-d-classe
+.DS_Store
+.env
+.env.local
+.env.*.local
