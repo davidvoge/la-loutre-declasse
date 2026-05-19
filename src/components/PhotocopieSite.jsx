@@ -33,7 +33,7 @@ function Header() {
           </div>
           <div className="site-header__titles">
             <span className="site-header__name">LA LOUTRE DÉCLASSE</span>
-            <span className="site-header__edition">// 2ᵉ ÉDITION · 28-30 AOÛT 26</span>
+            <span className="site-header__edition">// 2ᵉ ÉDITION · 3-5 JUILLET 26</span>
           </div>
         </a>
         <nav className="site-header__nav" aria-label="Navigation principale">
@@ -63,7 +63,7 @@ function Hero() {
   return (
     <section id="hero" className="hero" style={{ backgroundImage: NOISE }}>
       <div className="site-container hero__inner">
-        <div className="hero__badge">2ᵉ ÉDITION · 28-30 AOÛT 2026</div>
+        <div className="hero__badge">2ᵉ ÉDITION · 3-5 JUILLET 2026</div>
 
         <h1 className="hero__title">
           LA LOUTRE
@@ -74,7 +74,7 @@ function Hero() {
         <div className="hero__band">
           <div className="hero__band-cell">
             <div className="hero__band-label">DATES</div>
-            <div className="hero__band-value">VEN 28 / SAM 29 / DIM 30 AOÛT 26</div>
+            <div className="hero__band-value">VEN 3 / SAM 4 / DIM 5 JUILLET 26</div>
           </div>
           <div className="hero__band-cell">
             <div className="hero__band-label">OÙ</div>

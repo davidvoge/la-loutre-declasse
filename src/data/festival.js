@@ -1,7 +1,7 @@
 export const FESTIVAL = {
   name: 'La Loutre déclasse',
   edition: '2ᵉ édition',
-  dates: '28 · 29 · 30 août 2026',
+  dates: '3 · 4 · 5 juillet 2026',
   location: 'La Convergence des Loutres — Loguivy-Plougras (22)',
 };
 
@@ -172,9 +172,9 @@ export function parseHourSort(s) {
 }
 
 export const DAYS = [
-  { id: 'ven', label: 'Vendredi', date: '28 août', short: 'VEN' },
-  { id: 'sam', label: 'Samedi', date: '29 août', short: 'SAM' },
-  { id: 'dim', label: 'Dimanche', date: '30 août', short: 'DIM' },
+  { id: 'ven', label: 'Vendredi', date: '3 juillet', short: 'VEN' },
+  { id: 'sam', label: 'Samedi', date: '4 juillet', short: 'SAM' },
+  { id: 'dim', label: 'Dimanche', date: '5 juillet', short: 'DIM' },
 ];
 
 export const INFOS = [
