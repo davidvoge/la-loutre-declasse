@@ -25,7 +25,6 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     { name: 'time', type: 'string', title: 'Horaire', description: 'Ex : 19h30' },
-    { name: 'stage', type: 'string', title: 'Scène / lieu' },
     { name: 'genre', type: 'string', title: 'Genre / style' },
     {
       name: 'size',

@@ -21,7 +21,6 @@ export const ARTISTS_QUERY = `*[_type == "artist"] {
   "long": description,
   "img": coalesce(photo.asset->url, photoUrl),
   time,
-  stage,
   "url": coalesce(externalUrl, "#"),
   urlLabel
 }`;

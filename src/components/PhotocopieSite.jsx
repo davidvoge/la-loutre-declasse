@@ -121,7 +121,7 @@ function Lineup({ lineup, onOpenArtist }) {
     <section id="programmation" className="lineup">
       <div className="site-container">
         <div className="lineup__head">
-          <h2 className="lineup__title">L&apos;AFFICHE.</h2>
+          <h2 className="lineup__title">à l&apos;affiche.</h2>
           <div className="lineup__days">
             {DAYS.map((d) => (
               <a
@@ -189,7 +189,7 @@ function DayBlock({ day, lineup, onOpenArtist }) {
               <div className="act-row__genre">{a.genre}</div>
             </div>
             <div className="act-row__desc">
-              <strong>{a.stage}</strong> · {a.desc.slice(0, 70)}
+              {a.desc.slice(0, 70)}
               {a.desc.length > 70 ? '…' : ''}
             </div>
             <button type="button" className="act-row__btn" onClick={() => onOpenArtist(a.id)}>
@@ -469,9 +469,7 @@ function ArtistModal({ artistId, lineup, onClose }) {
         <div className="modal__photo">
           <img src={artist.img} alt="" />
           <div className="modal__photo-noise" style={{ backgroundImage: NOISE }} />
-          <div className="modal__photo-badge">
-            {artist.time} · {artist.stage}
-          </div>
+          <div className="modal__photo-badge">{artist.time}</div>
         </div>
 
         <div className="modal__body">
