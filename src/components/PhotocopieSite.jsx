@@ -59,6 +59,16 @@ function Header() {
   );
 }
 
+const TICKER_ITEMS = [
+  'PRIX LIBRE',
+  'CAMPING GRATUIT',
+  'CANTINE SUR PLACE',
+  'MARCHÉ CRÉATEUR',
+  'LOGUIVY-PLOUGRAS',
+];
+
+const TICKER_TEXT = `${TICKER_ITEMS.map((item) => `★ ${item}`).join(' ')} `;
+
 function Hero() {
   return (
     <section id="hero" className="hero" style={{ backgroundImage: NOISE }}>
@@ -82,7 +92,7 @@ function Hero() {
           </div>
           <div className="hero__band-cell hero__band-cell--highlight">
             <div className="hero__band-label">TARIF</div>
-            <div className="hero__band-value hero__band-value--sm">PRIX LIBRE · SANS JUSTIFICATIF</div>
+            <div className="hero__band-value hero__band-value--sm">PRIX LIBRE</div>
           </div>
         </div>
 
@@ -97,8 +107,9 @@ function Hero() {
       </div>
 
       <div className="hero__ticker">
-        <div className="hero__ticker-track">
-          ★ PRIX LIBRE ★ CAMPING GRATUIT ★ CANTINE SUR PLACE ★ ON NE LAISSE PERSONNE AU BORD DE LA ROUTE ★ PRIX LIBRE ★ CAMPING GRATUIT ★ LOGUIVY-PLOUGRAS ★
+        <div className="hero__ticker-track" aria-hidden="true">
+          <span>{TICKER_TEXT}</span>
+          <span>{TICKER_TEXT}</span>
         </div>
       </div>
     </section>
@@ -227,13 +238,10 @@ function Billetterie() {
           <div>
             <p className="billetterie__lede">
               Tu paies ce que tu peux, ce que tu veux, ce qui te semble juste.
-              <br />
-              Pas de pass à 12€, à 18€, à 32€.{' '}
-              <strong>Un seul billet. Un seul prix : le tien.</strong>
             </p>
             <p className="billetterie__note">
               On suggère 25€ pour les 3 jours si tu peux, 8€ si tu peux moins, 60€ si tu veux payer pour
-              deux. Sans justificatif, sans regard de travers.
+              deux.
               <br />
               Camping inclus. Cantine sur place. Bar coopératif.
             </p>
@@ -316,7 +324,7 @@ function Footer() {
               <br />
               NEWSLETTER.
             </h2>
-            <p>On t&apos;écrit 4 fois par an. Pas de pub. Pas de pixel-tracker. Juste des dates et des nouvelles.</p>
+            <p>On t&apos;envoie les actus de la convergence tous les mois.</p>
             <form
               className="newsletter-form"
               onSubmit={(e) => {

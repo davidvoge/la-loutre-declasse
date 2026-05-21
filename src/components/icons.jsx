@@ -32,6 +32,9 @@ export const IconAccess = ({ size = 22, color }) => (
 export const IconHeart = ({ size = 22, color }) => (
   <Icon size={size} color={color} d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z" />
 );
+export const IconMarket = ({ size = 22, color }) => (
+  <Icon size={size} color={color} d="M3 9l2-4h14l2 4M3 9h18M5 9v10a2 2 0 002 2h10a2 2 0 002-2V9M9 13v4M15 13v4" />
+);
 export const IconMail = ({ size = 18, color }) => (
   <Icon
     size={size}
@@ -51,6 +54,7 @@ export const ICON_MAP = {
   car: IconCar,
   tent: IconTent,
   fork: IconFork,
+  market: IconMarket,
   kids: IconKids,
   access: IconAccess,
   heart: IconHeart,

@@ -181,7 +181,7 @@ export const INFOS = [
   {
     icon: 'car',
     title: 'Y venir',
-    body: 'Loguivy-Plougras (22), dans les Côtes-d\'Armor. Co-voiturage encouragé. Gares les plus proches : Guingamp et Lannion.',
+    body: "Loguivy-Plougras (22), dans les Côtes-d'Armor. Co-voiturage encouragé. Gare la plus proche : Plouaret-Trégor.",
   },
   {
     icon: 'tent',
@@ -192,6 +192,11 @@ export const INFOS = [
     icon: 'fork',
     title: 'Boire & manger',
     body: 'Cantine sur place, bar coopératif, brunch dimanche midi en option. Gobelet réutilisable consigné 1 €.',
+  },
+  {
+    icon: 'market',
+    title: 'Marché créateur',
+    body: 'Artisans·es et créateur·ices sur place le samedi. Parcours libre, sans billet séparé.',
   },
   {
     icon: 'kids',
@@ -206,7 +211,7 @@ export const INFOS = [
   {
     icon: 'heart',
     title: 'Au cas où',
-    body: "Une équipe safer-party tourne en continu, repérable au brassard jaune. Ici on ne lâche personne au bord de la route.",
+    body: 'Une équipe safer-party tourne en continu, repérable au brassard jaune.',
   },
 ];
 
