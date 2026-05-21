@@ -196,7 +196,7 @@ export const INFOS = [
   {
     icon: 'market',
     title: 'Marché créateur',
-    body: 'Artisans·es et créateur·ices sur place le samedi. Parcours libre, sans billet séparé.',
+    body: 'Artisans·es et créateur·ices sur place le samedi et le dimanche. Parcours libre, sans billet séparé.',
   },
   {
     icon: 'kids',

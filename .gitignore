@@ -6,3 +6,4 @@ loutre-d-classe
 .env
 .env.local
 .env.*.local
+.vercel

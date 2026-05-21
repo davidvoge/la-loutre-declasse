@@ -314,6 +314,36 @@ function Partenaires() {
 }
 
 function Footer() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle');
+  const [message, setMessage] = useState('');
+
+  async function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Inscription impossible');
+      }
+
+      setStatus('success');
+      setMessage('Inscrit·e ! On t\'envoie les actus très bientôt.');
+      setEmail('');
+    } catch (error) {
+      setStatus('error');
+      setMessage(error instanceof Error ? error.message : 'Inscription impossible');
+    }
+  }
+
   return (
     <footer id="contact" className="site-footer" style={{ backgroundImage: NOISE }}>
       <div className="site-container">
@@ -325,15 +355,30 @@ function Footer() {
               NEWSLETTER.
             </h2>
             <p>On t&apos;envoie les actus de la convergence tous les mois.</p>
-            <form
-              className="newsletter-form"
-              onSubmit={(e) => {
-                e.preventDefault();
-              }}
-            >
-              <input type="email" placeholder="TON@EMAIL.FR" aria-label="Adresse e-mail" />
-              <button type="submit">OK →</button>
+            <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
+              <input
+                type="email"
+                placeholder="TON@EMAIL.FR"
+                aria-label="Adresse e-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={status === 'loading'}
+              />
+              <button type="submit" disabled={status === 'loading'}>
+                {status === 'loading' ? '…' : 'OK →'}
+              </button>
             </form>
+            {message && (
+              <p
+                className={`newsletter-form__status${
+                  status === 'success' ? ' newsletter-form__status--success' : ''
+                }${status === 'error' ? ' newsletter-form__status--error' : ''}`}
+                role="status"
+              >
+                {message}
+              </p>
+            )}
           </div>
           <div>
             <h4>// LE FESTIVAL</h4>

@@ -861,6 +861,28 @@
   text-transform: uppercase;
 }
 
+.newsletter-form button:disabled,
+.newsletter-form input:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.newsletter-form__status {
+  margin: 12px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #f4ecd8;
+}
+
+.newsletter-form__status--success {
+  color: #ffe600;
+}
+
+.newsletter-form__status--error {
+  color: #ff8a8a;
+}
+
 .site-footer h4 {
   font-weight: 900;
   font-size: 12px;
