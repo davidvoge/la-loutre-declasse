@@ -181,17 +181,17 @@ export const INFOS = [
   {
     icon: 'car',
     title: 'Y venir',
-    body: "Loguivy-Plougras (22), dans les Côtes-d'Armor. Co-voiturage encouragé. Gare la plus proche : Plouaret-Trégor.",
+    body: "Loguivy-Plougras (22), dans les Côtes-d'Armor. Co-voiturage encouragé. Gares les plus proches : Plouaret-Trégor, Guingamp et Morlaix.",
   },
   {
     icon: 'tent',
     title: 'Camping',
-    body: 'Camping gratuit sur place, inclus dans tous les pass. Douches chaudes (peu nombreuses, à partager). Apporte ta tente.',
+    body: 'Camping gratuit sur place. Apporte ta tente.',
   },
   {
     icon: 'fork',
     title: 'Boire & manger',
-    body: 'Cantine sur place, bar coopératif, brunch dimanche midi en option. Gobelet réutilisable consigné 1 €.',
+    body: 'Cantine sur place, bar coopératif, brunch dimanche midi. Gobelet réutilisable consigné 1 €.',
   },
   {
     icon: 'market',
@@ -207,11 +207,6 @@ export const INFOS = [
     icon: 'access',
     title: 'Accessibilité',
     body: "Site partiellement accessible PMR. Écris-nous avant si tu as des besoins spécifiques, on cale ce qu'il faut.",
-  },
-  {
-    icon: 'heart',
-    title: 'Au cas où',
-    body: 'Une équipe safer-party tourne en continu, repérable au brassard jaune.',
   },
 ];
 
