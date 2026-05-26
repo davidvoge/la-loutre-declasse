@@ -596,9 +596,14 @@
   padding: clamp(70px, 8vw, 100px) 0;
 }
 
-.billetterie .section-intro__title {
-  font-size: clamp(54px, 9vw, 128px);
-  line-height: 0.82;
+.billetterie__kicker {
+  margin: 10px 0 0;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 1.5vw, 18px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(14, 11, 7, 0.65);
 }
 
 .billetterie__card {
@@ -611,6 +616,23 @@
   grid-template-columns: 1fr auto;
   gap: 32px;
   align-items: center;
+}
+
+.billetterie__badge {
+  position: absolute;
+  top: -18px;
+  left: 24px;
+  background: #ff2d2d;
+  color: #ffe600;
+  padding: 8px 14px;
+  font-family: "Arial Black", Impact, sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 3px solid #0e0b07;
+  transform: rotate(-2deg);
+  z-index: 4;
 }
 
 .billetterie__lede {
@@ -772,10 +794,32 @@
 .partenaires__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 12px;
+  gap: 16px 20px;
+  align-items: center;
 }
 
-.partenaires__list span {
+.partenaires__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partenaires__item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.partenaires__logo {
+  display: block;
+  height: clamp(36px, 4vw, 52px);
+  width: auto;
+  max-width: min(160px, 28vw);
+  object-fit: contain;
+}
+
+.partenaires__name {
   font-weight: 800;
   font-size: 13px;
   color: #0e0b07;

@@ -3,10 +3,10 @@ import {
   BILLETTERIE_URL,
   DAYS,
   INFOS,
-  PARTNERS,
   parseHourSort,
 } from '../data/festival';
 import { useArtists } from '../hooks/useArtists';
+import { usePartners } from '../hooks/usePartners';
 import { ICON_MAP, IconInsta, IconMail } from './icons';
 import { CREME, JAUNE, NOIR, NOISE, ROUGE, Tape } from './theme.jsx';
 import './PhotocopieSite.css';
@@ -51,7 +51,7 @@ function Header() {
             </a>
           ))}
           <a href="#billetterie" className="site-header__cta" onClick={(e) => { e.preventDefault(); scrollTo('billetterie'); }}>
-            ★ PRENDS UN TICKET
+            ★ PRÉVENTE OUVERTE
           </a>
         </nav>
       </div>
@@ -60,6 +60,7 @@ function Header() {
 }
 
 const TICKER_ITEMS = [
+  'PRÉVENTE OUVERTE',
   'PRIX LIBRE',
   'CAMPING GRATUIT',
   'CANTINE SUR PLACE',
@@ -225,23 +226,22 @@ function Billetterie() {
     <section id="billetterie" className="billetterie">
       <div className="site-container site-container--narrow">
         <div className="section-intro">
-          <div className="section-intro__eyebrow section-intro__eyebrow--red">// BILLETTERIE</div>
-          <h2 className="section-intro__title">
-            PRIX
-            <br />
-            LIBRE.
-          </h2>
+          <div className="section-intro__eyebrow section-intro__eyebrow--red">// PRÉVENTE · BILLETTERIE</div>
+          <h2 className="section-intro__title">CHOPE TON BILLET.</h2>
+          <p className="billetterie__kicker">Prix libre · prévente ouverte</p>
         </div>
 
         <div className="billetterie__card">
           <Tape w={120} rot={-3} style={{ top: -14, left: '50%', marginLeft: -60, zIndex: 3 }} color={ROUGE} />
+          <div className="billetterie__badge">PRÉVENTE OUVERTE</div>
           <div>
             <p className="billetterie__lede">
-              Tu paies ce que tu peux, ce que tu veux, ce qui te semble juste.
+              <strong>Réserver à l&apos;avance nous aide énormément à organiser le festival.</strong> Tu paies
+              ce que tu peux, ce que tu veux, ce qui te semble juste.
             </p>
             <p className="billetterie__note">
-              On suggère 25€ pour les 3 jours si tu peux, 8€ si tu peux moins, 60€ si tu veux payer pour
-              deux.
+              Si tu cherches une idée, beaucoup mettent autour de 25€ pour les 3 jours — mais vraiment, c&apos;est
+              toi qui décides.
               <br />
               Camping inclus. Cantine sur place. Bar coopératif.
             </p>
@@ -252,12 +252,12 @@ function Billetterie() {
             rel="noopener noreferrer"
             className="billetterie__cta"
           >
-            JE PRENDS UN BILLET <span>↗</span>
+            RÉSERVER EN PRÉVENTE <span>↗</span>
           </a>
         </div>
 
         <p className="billetterie__redirect">
-          La billetterie est hébergée sur HelloAsso. Tu seras redirigé·e en cliquant.
+          Prévente hébergée sur HelloAsso. Tu seras redirigé·e en cliquant.
         </p>
       </div>
     </section>
@@ -296,17 +296,35 @@ function Infos() {
   );
 }
 
-function Partenaires() {
+function Partenaires({ partners }) {
   return (
     <section className="partenaires">
       <div className="site-container">
         <h2 className="partenaires__title">// AVEC :</h2>
         <div className="partenaires__list">
-          {PARTNERS.map((p, i) => (
-            <span key={p} style={{ transform: `rotate(${(i % 5 - 2) * 0.5}deg)` }}>
-              {p}
-            </span>
-          ))}
+          {partners.map((partner, i) => {
+            const content = partner.logo ? (
+              <img src={partner.logo} alt={partner.name} className="partenaires__logo" />
+            ) : (
+              <span className="partenaires__name">{partner.name}</span>
+            );
+
+            return (
+              <div
+                key={partner.id}
+                className="partenaires__item"
+                style={{ transform: `rotate(${(i % 5 - 2) * 0.5}deg)` }}
+              >
+                {partner.url ? (
+                  <a href={partner.url} target="_blank" rel="noopener noreferrer">
+                    {content}
+                  </a>
+                ) : (
+                  content
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -406,13 +424,17 @@ function Footer() {
           <div>
             <h4>// CONTACT</h4>
             <ul>
-              <li>festival@laloutredeclasse.fr</li>
-              <li>+33 (0)4 71 00 00 00</li>
+              <li>
+                <a href="mailto:contact@laconvergencedesloutres.fr">contact@laconvergencedesloutres.fr</a>
+              </li>
+              <li>
+                <a href="tel:+33256392176">02 56 39 21 76</a>
+              </li>
               <li className="site-footer__social">
                 <a href="#" aria-label="Instagram">
                   <IconInsta size={18} color={NOIR} />
                 </a>
-                <a href="mailto:festival@laloutredeclasse.fr" aria-label="E-mail">
+                <a href="mailto:contact@laconvergencedesloutres.fr" aria-label="E-mail">
                   <IconMail size={18} color={NOIR} />
                 </a>
               </li>
@@ -489,7 +511,7 @@ function ArtistModal({ artistId, lineup, onClose }) {
                   scrollTo('billetterie');
                 }}
               >
-                Prendre un billet
+                Réserver en prévente
               </a>
             </div>
           )}
@@ -502,6 +524,7 @@ function ArtistModal({ artistId, lineup, onClose }) {
 export default function PhotocopieSite() {
   const [openArtist, setOpenArtist] = useState(null);
   const { lineup } = useArtists();
+  const { partners } = usePartners();
 
   return (
     <div className="photocopie-site">
@@ -511,7 +534,7 @@ export default function PhotocopieSite() {
       <Timetable lineup={lineup} onOpenArtist={setOpenArtist} />
       <Billetterie />
       <Infos />
-      <Partenaires />
+      <Partenaires partners={partners} />
       <Footer />
       <ArtistModal artistId={openArtist} lineup={lineup} onClose={() => setOpenArtist(null)} />
     </div>

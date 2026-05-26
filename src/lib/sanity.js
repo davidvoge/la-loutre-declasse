@@ -28,3 +28,14 @@ export const ARTISTS_QUERY = `*[_type == "artist"] {
 export async function fetchArtists() {
   return sanityClient.fetch(ARTISTS_QUERY);
 }
+
+export const PARTNERS_QUERY = `*[_type == "partner"] | order(order asc, name asc) {
+  "id": slug.current,
+  name,
+  "logo": coalesce(logo.asset->url, logoUrl),
+  url
+}`;
+
+export async function fetchPartners() {
+  return sanityClient.fetch(PARTNERS_QUERY);
+}

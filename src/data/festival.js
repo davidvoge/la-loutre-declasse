@@ -137,6 +137,19 @@ export const FALLBACK_LINEUP = [
     urlLabel: 'SoundCloud',
   },
   {
+    id: 'brunch',
+    name: 'Brunch',
+    day: 'dim',
+    genre: 'Repas',
+    size: 'm',
+    desc: 'Brunch dominical sur place. Viens tard, reste longtemps.',
+    long: 'Brunch du dimanche à partir de midi. Sur place, sans réservation — on s\'installe, on mange, on papote.',
+    img: '/assets/photos/graines-de-culture.png',
+    time: '12h00',
+    url: '#',
+    urlLabel: 'En savoir plus',
+  },
+  {
     id: 'roue',
     name: 'La Roue del Armor',
     day: 'dim',
@@ -212,13 +225,12 @@ export const INFOS = [
   },
 ];
 
-export const PARTNERS = [
-  'Côtes d\'Armor',
-  'LTC',
-  'Crédit Mutuel',
-  'La Convergence des Loutres',
-  'SACEM',
-  'CAF & EVS',
+export const FALLBACK_PARTNERS = [
+  { id: 'cotes-armor', name: "Côtes d'Armor", logo: null, url: null },
+  { id: 'ltc', name: 'LTC', logo: null, url: null },
+  { id: 'credit-mutuel', name: 'Crédit Mutuel de Bretagne', logo: null, url: null },
+  { id: 'convergence', name: 'La Convergence des Loutres', logo: null, url: null },
+  { id: 'sacem', name: 'SACEM', logo: null, url: null },
 ];
 
-export const BILLETTERIE_URL = 'https://billetterie.helloasso.com/laloutredeclasse';
+export const BILLETTERIE_URL = 'https://www.helloasso.com/associations/convergence-des-loutres/evenements/prevente-loutre-declasse';
