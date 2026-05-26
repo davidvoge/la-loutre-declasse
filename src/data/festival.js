@@ -76,7 +76,7 @@ export const FALLBACK_LINEUP = [
     name: 'Murga La Kilumba',
     day: 'sam',
     genre: 'Fanfare',
-    size: 'xl',
+    size: 'l',
     desc: 'Quinze percussionnistes, bombos et platillos. Ils traversent le site, ils ramassent tout le monde.',
     long: "Murga La Kilumba, c'est quinze percussionnistes (bombos, platillos, repique) qui déroulent les rythmes de la murga uruguayenne dans toute leur intensité carnavalesque. Les concerts du samedi démarrent à 18h avec eux.",
     img: '/assets/photos/equipe.png',
@@ -115,7 +115,7 @@ export const FALLBACK_LINEUP = [
     name: 'Sitala Band System',
     day: 'sam',
     genre: 'Groove interculturel',
-    size: 'l',
+    size: 'xl',
     desc: 'La tornade musicale venue du Burkina-Faso. Embarquement immédiat.',
     long: "La tornade musicale venue du Burkina-Faso ! Véritable expérience des sens, l'objectif du Sitala Band System est clair : créer un temps immersif et festif pour une communion entre artistes et public.",
     img: '/assets/photos/residence-3270.jpeg',
@@ -176,6 +176,8 @@ export const FALLBACK_LINEUP = [
     urlLabel: 'En savoir plus',
   },
 ];
+
+export const POSTER_HIDDEN_IDS = new Set(['ateliers', 'brunch']);
 
 export function parseHourSort(s) {
   const m = String(s || '').match(/(\d{1,2})h(\d{2})?/);

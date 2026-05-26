@@ -3,6 +3,7 @@ import {
   BILLETTERIE_URL,
   DAYS,
   INFOS,
+  POSTER_HIDDEN_IDS,
   parseHourSort,
 } from '../data/festival';
 import { useArtists } from '../hooks/useArtists';
@@ -141,7 +142,7 @@ function Lineup({ lineup, onOpenArtist }) {
 
         <div className="lineup__poster">
           <div className="lineup__names">
-            {lineup.map((a, i) => {
+            {lineup.filter((a) => !POSTER_HIDDEN_IDS.has(a.id)).map((a, i) => {
               const invert = i === 2 || i === 5;
               return (
                 <button
