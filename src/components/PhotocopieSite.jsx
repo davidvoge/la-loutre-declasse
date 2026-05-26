@@ -126,7 +126,7 @@ function Hero() {
 function Lineup({ lineup, onOpenArtist }) {
   return (
     <section id="programmation" className="lineup">
-      <div className="site-container site-container--wide">
+      <div className="site-container">
         <div className="lineup__head">
           <h2 className="lineup__title">à l&apos;affiche.</h2>
           <div className="lineup__days">
@@ -149,24 +149,15 @@ function Lineup({ lineup, onOpenArtist }) {
           <div className="lineup__names">
             {lineup.filter((a) => !POSTER_HIDDEN_IDS.has(a.id)).map((a, i) => {
               const invert = i === 2 || i === 5;
-              const words = a.name.split(/\s+/);
               return (
                 <button
                   key={a.id}
                   type="button"
                   className={`lineup__name lineup__name--${a.size}${invert ? ' lineup__name--invert' : ''}`}
+                  style={{ transform: `rotate(${(i % 7 - 3) * 0.5}deg)` }}
                   onClick={() => onOpenArtist(a.id)}
                 >
-                  {invert ? (
-                    words.map((word, wi) => (
-                      <span key={wi} className="lineup__name-highlight">
-                        {word}
-                        {wi < words.length - 1 ? '\u00A0' : ''}
-                      </span>
-                    ))
-                  ) : (
-                    a.name
-                  )}
+                  {a.name}
                 </button>
               );
             })}
