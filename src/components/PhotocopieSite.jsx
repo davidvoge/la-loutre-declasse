@@ -149,15 +149,24 @@ function Lineup({ lineup, onOpenArtist }) {
           <div className="lineup__names">
             {lineup.filter((a) => !POSTER_HIDDEN_IDS.has(a.id)).map((a, i) => {
               const invert = i === 2 || i === 5;
+              const words = a.name.split(/\s+/);
               return (
                 <button
                   key={a.id}
                   type="button"
                   className={`lineup__name lineup__name--${a.size}${invert ? ' lineup__name--invert' : ''}`}
-                  style={{ transform: `rotate(${(i % 7 - 3) * 0.5}deg)` }}
                   onClick={() => onOpenArtist(a.id)}
                 >
-                  <span className="lineup__name-text">{a.name}</span>
+                  {invert ? (
+                    words.map((word, wi) => (
+                      <span key={wi} className="lineup__name-highlight">
+                        {word}
+                        {wi < words.length - 1 ? '\u00A0' : ''}
+                      </span>
+                    ))
+                  ) : (
+                    a.name
+                  )}
                 </button>
               );
             })}
@@ -306,31 +315,29 @@ function Partenaires({ partners }) {
   return (
     <section className="partenaires">
       <div className="site-container">
-        <h2 className="partenaires__title">// AVEC :</h2>
-        <div className="partenaires__list">
-          {partners.map((partner, i) => {
-            const content = partner.logo ? (
-              <img src={partner.logo} alt={partner.name} className="partenaires__logo" />
-            ) : (
-              <span className="partenaires__name">{partner.name}</span>
-            );
+        <div className="partenaires__inner">
+          <h2 className="partenaires__title">// AVEC :</h2>
+          <div className="partenaires__list">
+            {partners.map((partner) => {
+              const content = partner.logo ? (
+                <img src={partner.logo} alt={partner.name} className="partenaires__logo" />
+              ) : (
+                <span className="partenaires__name">{partner.name}</span>
+              );
 
-            return (
-              <div
-                key={partner.id}
-                className="partenaires__item"
-                style={{ transform: `rotate(${(i % 5 - 2) * 0.5}deg)` }}
-              >
-                {partner.url ? (
-                  <a href={partner.url} target="_blank" rel="noopener noreferrer">
-                    {content}
-                  </a>
-                ) : (
-                  content
-                )}
-              </div>
-            );
-          })}
+              return (
+                <div key={partner.id} className="partenaires__item">
+                  {partner.url ? (
+                    <a href={partner.url} target="_blank" rel="noopener noreferrer">
+                      {content}
+                    </a>
+                  ) : (
+                    content
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
@@ -509,15 +516,8 @@ function ArtistModal({ artistId, lineup, onClose }) {
               <a href={artist.url} target="_blank" rel="noopener noreferrer">
                 {artist.urlLabel || 'Écouter'} <span>↗</span>
               </a>
-              <a
-                href="#billetterie"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onClose();
-                  scrollTo('billetterie');
-                }}
-              >
-                Réserver en prévente
+              <a href={BILLETTERIE_URL} target="_blank" rel="noopener noreferrer">
+                Réserver en prévente <span>↗</span>
               </a>
             </div>
           )}

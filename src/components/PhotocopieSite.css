@@ -360,9 +360,8 @@
 .lineup__names {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  gap: clamp(2px, 0.6vw, 10px);
   align-items: center;
+  gap: clamp(14px, 2.2vw, 28px);
   text-align: center;
   font-family: "Arial Black", Impact, sans-serif;
   text-transform: uppercase;
@@ -371,11 +370,11 @@
 
 .lineup__name {
   font-weight: 900;
-  line-height: 0.9;
+  line-height: 1.05;
   display: block;
   width: fit-content;
   max-width: 100%;
-  padding: 0;
+  padding: 0.06em 0;
   border: none;
   background: transparent;
   color: #0e0b07;
@@ -384,33 +383,28 @@
   text-transform: uppercase;
 }
 
-.lineup__name-text {
-  display: inline;
-  padding: 0;
-}
-
 .lineup__name--xl {
-  font-size: clamp(40px, 7.5vw, 110px);
+  font-size: clamp(36px, 6.5vw, 96px);
 }
 
 .lineup__name--l {
-  font-size: clamp(30px, 5.5vw, 80px);
+  font-size: clamp(28px, 5vw, 72px);
 }
 
 .lineup__name--m {
-  font-size: clamp(24px, 4vw, 58px);
+  font-size: clamp(22px, 3.6vw, 52px);
 }
 
 .lineup__name--invert {
-  color: #0e0b07;
+  line-height: 1.2;
 }
 
-.lineup__name--invert .lineup__name-text {
+.lineup__name-highlight {
+  display: inline-block;
   background: #0e0b07;
   color: #ffe600;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  padding: 0.04em 0.1em;
+  padding: 0.02em 0.12em;
+  line-height: 1.05;
 }
 
 .lineup__extras {
@@ -796,24 +790,35 @@
 .partenaires {
   background: #f4ecd8;
   color: #0e0b07;
-  padding: 70px 0;
+  padding: clamp(40px, 5vw, 56px) 0;
+}
+
+.partenaires__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(16px, 3vw, 32px);
 }
 
 .partenaires__title {
   font-family: "Arial Black", Impact, sans-serif;
   font-weight: 900;
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(22px, 2.5vw, 36px);
   color: #0e0b07;
-  margin: 0 0 24px;
+  margin: 0;
   text-transform: uppercase;
   letter-spacing: -0.02em;
+  flex-shrink: 0;
 }
 
 .partenaires__list {
   display: flex;
+  flex: 1;
   flex-wrap: wrap;
-  gap: 16px 20px;
+  gap: clamp(12px, 2vw, 24px);
   align-items: center;
+  justify-content: space-between;
+  min-width: min(100%, 480px);
 }
 
 .partenaires__item {
