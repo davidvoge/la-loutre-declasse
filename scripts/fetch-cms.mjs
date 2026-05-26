@@ -42,7 +42,8 @@ const ARTISTS_QUERY = `*[_type == "artist"] {
   photoUrl,
   time,
   "url": coalesce(externalUrl, "#"),
-  urlLabel
+  urlLabel,
+  "showOnPoster": coalesce(showOnPoster, true)
 }`;
 
 const PARTNERS_QUERY = `*[_type == "partner"] | order(order asc, name asc) {

@@ -39,6 +39,13 @@ export default {
       },
       initialValue: 'l',
     },
+    {
+      name: 'showOnPoster',
+      type: 'boolean',
+      title: "Afficher sur l'affiche",
+      description: "Décoche pour masquer cet acte dans la section « à l'affiche » (il reste dans la programmation).",
+      initialValue: true,
+    },
     { name: 'shortDescription', type: 'text', title: 'Description courte', rows: 3 },
     { name: 'description', type: 'text', title: 'Description longue (modale)', rows: 6 },
     { name: 'photo', type: 'image', title: 'Photo', options: { hotspot: true }, description: 'Image affichée dans la fiche artiste. Prioritaire sur l’URL de secours.' },

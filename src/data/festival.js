@@ -18,6 +18,7 @@ export const FALLBACK_LINEUP = [
     time: '19h00',
     url: '#',
     urlLabel: 'En savoir plus',
+    showOnPoster: false,
   },
   {
     id: 'bleuenn',
@@ -57,6 +58,7 @@ export const FALLBACK_LINEUP = [
     time: '12h00',
     url: '#',
     urlLabel: 'En savoir plus',
+    showOnPoster: false,
   },
   {
     id: 'cirk-anecdotik',
@@ -148,6 +150,7 @@ export const FALLBACK_LINEUP = [
     time: '12h00',
     url: '#',
     urlLabel: 'En savoir plus',
+    showOnPoster: false,
   },
   {
     id: 'roue',
@@ -176,8 +179,6 @@ export const FALLBACK_LINEUP = [
     urlLabel: 'En savoir plus',
   },
 ];
-
-export const POSTER_HIDDEN_IDS = new Set(['ateliers', 'brunch']);
 
 export function parseHourSort(s) {
   const m = String(s || '').match(/(\d{1,2})h(\d{2})?/);
