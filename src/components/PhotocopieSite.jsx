@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   BILLETTERIE_URL,
   DAYS,
@@ -237,7 +237,6 @@ function Billetterie() {
         </div>
 
         <div className="billetterie__card">
-          <Tape w={120} rot={-3} style={{ top: -14, left: '50%', marginLeft: -60, zIndex: 3 }} color={ROUGE} />
           <div className="billetterie__badge">PRÉVENTE OUVERTE</div>
           <div>
             <p className="billetterie__lede">
@@ -455,6 +454,16 @@ function Footer() {
 
 function ArtistModal({ artistId, lineup, onClose }) {
   const artist = artistId ? lineup.find((a) => a.id === artistId) : null;
+  const bodyRef = useRef(null);
+  const [scrollState, setScrollState] = useState({ canScroll: false, atBottom: false });
+
+  const updateScrollState = useCallback(() => {
+    const el = bodyRef.current;
+    if (!el) return;
+    const canScroll = el.scrollHeight > el.clientHeight + 4;
+    const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 12;
+    setScrollState({ canScroll, atBottom });
+  }, []);
 
   useEffect(() => {
     if (!artist) return undefined;
@@ -463,15 +472,27 @@ function ArtistModal({ artistId, lineup, onClose }) {
     };
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKey);
+    window.addEventListener('resize', updateScrollState);
+    const frame = requestAnimationFrame(updateScrollState);
     return () => {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', updateScrollState);
+      cancelAnimationFrame(frame);
     };
-  }, [artist, onClose]);
+  }, [artist, onClose, updateScrollState]);
+
+  useEffect(() => {
+    if (!artist || !bodyRef.current) return;
+    bodyRef.current.scrollTop = 0;
+    const frame = requestAnimationFrame(updateScrollState);
+    return () => cancelAnimationFrame(frame);
+  }, [artist?.id, updateScrollState]);
 
   if (!artist) return null;
 
   const dayLabel = DAYS.find((d) => d.id === artist.day);
+  const showScrollHint = scrollState.canScroll && !scrollState.atBottom;
 
   return (
     <div className="modal-overlay" onClick={onClose} role="presentation">
@@ -492,12 +513,16 @@ function ArtistModal({ artistId, lineup, onClose }) {
         </div>
 
         <div className="modal__photo">
-          <img src={artist.img} alt="" />
+          <img src={artist.img} alt="" onLoad={updateScrollState} />
           <div className="modal__photo-noise" style={{ backgroundImage: NOISE }} />
           <div className="modal__photo-badge">{artist.time}</div>
         </div>
 
-        <div className="modal__body">
+        <div
+          ref={bodyRef}
+          className="modal__body"
+          onScroll={updateScrollState}
+        >
           <div className="modal__genre">{artist.genre}</div>
           <h2 id="modal-title">{artist.name}</h2>
           <p>{artist.long}</p>
@@ -509,6 +534,11 @@ function ArtistModal({ artistId, lineup, onClose }) {
               <a href={BILLETTERIE_URL} target="_blank" rel="noopener noreferrer">
                 Réserver en prévente <span>↗</span>
               </a>
+            </div>
+          )}
+          {showScrollHint && (
+            <div className="modal__scroll-hint" aria-hidden="true">
+              ↓ Faire défiler pour en voir plus
             </div>
           )}
         </div>
