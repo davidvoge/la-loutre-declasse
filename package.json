@@ -4,18 +4,21 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "fetch-cms": "node scripts/fetch-cms.mjs",
+    "predev": "npm run fetch-cms",
     "dev": "vite",
+    "prebuild": "npm run fetch-cms",
     "build": "vite build",
     "preview": "vite preview",
     "studio": "npm run dev --prefix studio"
   },
   "dependencies": {
-    "@sanity/client": "^7.22.0",
-    "@sanity/image-url": "^2.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@sanity/client": "^7.22.0",
+    "@sanity/image-url": "^2.1.1",
     "@vitejs/plugin-react": "^4.5.2",
     "vite": "^6.3.5"
   }

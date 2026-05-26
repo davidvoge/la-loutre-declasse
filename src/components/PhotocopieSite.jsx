@@ -126,7 +126,7 @@ function Hero() {
 function Lineup({ lineup, onOpenArtist }) {
   return (
     <section id="programmation" className="lineup">
-      <div className="site-container">
+      <div className="site-container site-container--wide">
         <div className="lineup__head">
           <h2 className="lineup__title">à l&apos;affiche.</h2>
           <div className="lineup__days">
@@ -157,7 +157,7 @@ function Lineup({ lineup, onOpenArtist }) {
                   style={{ transform: `rotate(${(i % 7 - 3) * 0.5}deg)` }}
                   onClick={() => onOpenArtist(a.id)}
                 >
-                  {a.name}
+                  <span className="lineup__name-text">{a.name}</span>
                 </button>
               );
             })}

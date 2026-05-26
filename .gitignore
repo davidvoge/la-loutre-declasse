@@ -7,3 +7,4 @@ loutre-d-classe
 .env.local
 .env.*.local
 .vercel
+src/generated
