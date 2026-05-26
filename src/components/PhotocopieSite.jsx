@@ -156,7 +156,7 @@ function Lineup({ lineup, onOpenArtist }) {
             })}
           </div>
           <p className="lineup__extras">
-            + ATELIERS + BAL + SIESTE SONORE + BRUNCH DIMANCHE + CANTINE SUR PLACE
+            + ATELIERS · MARCHÉ D&apos;ARTISAN·ES · REPAS &amp; BUVETTE · BRUNCH DIMANCHE · CAMPING · TOMBOLA
           </p>
         </div>
       </div>
