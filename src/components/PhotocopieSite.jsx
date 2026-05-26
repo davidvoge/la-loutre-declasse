@@ -51,7 +51,12 @@ function Header() {
               {label}
             </a>
           ))}
-          <a href="#billetterie" className="site-header__cta" onClick={(e) => { e.preventDefault(); scrollTo('billetterie'); }}>
+          <a
+            href={BILLETTERIE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="site-header__cta"
+          >
             ★ PRÉVENTE OUVERTE
           </a>
         </nav>
