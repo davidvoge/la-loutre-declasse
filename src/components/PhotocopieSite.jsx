@@ -241,7 +241,7 @@ function Billetterie() {
               ce que tu peux, ce que tu veux, ce qui te semble juste.
             </p>
             <p className="billetterie__note">
-              Si tu cherches une idée, beaucoup mettent autour de 25€ pour les 3 jours — mais vraiment, c&apos;est
+              Si tu cherches une idée, beaucoup mettent autour de 20€ pour les 3 jours — mais vraiment, c&apos;est
               toi qui décides.
               <br />
               Camping inclus. Cantine sur place. Bar coopératif.
