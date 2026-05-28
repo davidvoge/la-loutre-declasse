@@ -28,6 +28,17 @@ export default defineConfig(({ mode }) => {
       {
         name: 'newsletter-api-dev',
         configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url === '/presse' || req.url?.startsWith('/presse?')) {
+              res.writeHead(302, {
+                Location: 'https://drive.google.com/drive/folders/19Alatmqgz_Zl52zddsh1MOGCb5gMFapr?usp=sharing',
+              });
+              res.end();
+              return;
+            }
+            next();
+          });
+
           server.middlewares.use('/api/newsletter', async (req, res, next) => {
             if (req.method !== 'POST') {
               res.statusCode = 405;
