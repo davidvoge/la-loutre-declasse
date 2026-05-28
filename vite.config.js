@@ -1,6 +1,12 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { subscribeToNewsletter } from './lib/subscribeNewsletter.js';
+import { BILLETTERIE_URL } from './src/data/festival.js';
+
+const EXTERNAL_REDIRECTS = {
+  '/presse': 'https://drive.google.com/drive/folders/19Alatmqgz_Zl52zddsh1MOGCb5gMFapr?usp=sharing',
+  '/billeterie': BILLETTERIE_URL,
+};
 
 function readJsonBody(req) {
   return new Promise((resolve, reject) => {
@@ -29,10 +35,10 @@ export default defineConfig(({ mode }) => {
         name: 'newsletter-api-dev',
         configureServer(server) {
           server.middlewares.use((req, res, next) => {
-            if (req.url === '/presse' || req.url?.startsWith('/presse?')) {
-              res.writeHead(302, {
-                Location: 'https://drive.google.com/drive/folders/19Alatmqgz_Zl52zddsh1MOGCb5gMFapr?usp=sharing',
-              });
+            const path = req.url?.split('?')[0];
+            const destination = path && EXTERNAL_REDIRECTS[path];
+            if (destination) {
+              res.writeHead(302, { Location: destination });
               res.end();
               return;
             }
