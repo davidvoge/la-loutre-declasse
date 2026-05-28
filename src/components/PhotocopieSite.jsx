@@ -300,40 +300,7 @@ function Infos() {
   );
 }
 
-function Partenaires({ partners }) {
-  return (
-    <section className="partenaires">
-      <div className="site-container">
-        <div className="partenaires__inner">
-          <h2 className="partenaires__title">// AVEC :</h2>
-          <div className="partenaires__list">
-            {partners.map((partner) => {
-              const content = partner.logo ? (
-                <img src={partner.logo} alt={partner.name} className="partenaires__logo" />
-              ) : (
-                <span className="partenaires__name">{partner.name}</span>
-              );
-
-              return (
-                <div key={partner.id} className="partenaires__item">
-                  {partner.url ? (
-                    <a href={partner.url} target="_blank" rel="noopener noreferrer">
-                      {content}
-                    </a>
-                  ) : (
-                    content
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
+function Footer({ partners }) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle');
   const [message, setMessage] = useState('');
@@ -443,6 +410,42 @@ function Footer() {
             </ul>
           </div>
         </div>
+
+        {partners.length > 0 && (
+          <div className="site-footer__partners">
+            <h4>// AVEC :</h4>
+            <div className="site-footer__partners-list">
+              {partners.map((partner) => {
+                const content = partner.logo ? (
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="site-footer__partners-logo"
+                  />
+                ) : (
+                  <span className="site-footer__partners-name">{partner.name}</span>
+                );
+
+                return partner.url ? (
+                  <a
+                    key={partner.id}
+                    href={partner.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="site-footer__partners-item"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div key={partner.id} className="site-footer__partners-item">
+                    {content}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         <div className="site-footer__legal">
           <span>© 2026 LA LOUTRE DÉCLASSE // CONVERGENCE DES LOUTRES // ASSO LOI 1901</span>
           <span>SITE FAIT À LA MAIN · COPIEZ-LE</span>
@@ -560,8 +563,7 @@ export default function PhotocopieSite() {
       <Timetable lineup={lineup} onOpenArtist={setOpenArtist} />
       <Billetterie />
       <Infos />
-      <Partenaires partners={partners} />
-      <Footer />
+      <Footer partners={partners} />
       <ArtistModal artistId={openArtist} lineup={lineup} onClose={() => setOpenArtist(null)} />
     </div>
   );
