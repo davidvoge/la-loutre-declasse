@@ -796,22 +796,33 @@
 }
 
 .site-footer__partners {
-  margin-top: clamp(32px, 5vw, 48px);
-  padding-top: clamp(24px, 4vw, 32px);
-  border-top: 2px solid rgba(212, 180, 0, 0.35);
+  margin-top: clamp(36px, 5vw, 52px);
+  background: #f4ecd8;
+  color: #0e0b07;
+  padding: clamp(16px, 2.5vw, 22px) clamp(16px, 3vw, 24px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.5vw, 20px) clamp(20px, 4vw, 36px);
 }
 
-.site-footer__partners h4 {
-  text-align: center;
-  margin-bottom: 20px;
+.site-footer__partners-label {
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(14, 11, 7, 0.55);
+  flex-shrink: 0;
 }
 
 .site-footer__partners-list {
   display: flex;
+  flex: 1 1 280px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: clamp(16px, 3vw, 28px) clamp(20px, 4vw, 40px);
+  gap: clamp(16px, 3vw, 28px) clamp(24px, 5vw, 44px);
 }
 
 .site-footer__partners-item {
@@ -819,24 +830,22 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  background: rgba(244, 236, 216, 0.96);
-  padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px);
 }
 
 .site-footer__partners-logo {
   display: block;
-  height: clamp(44px, 6vw, 72px);
+  height: clamp(52px, 9vw, 84px);
   width: auto;
-  max-width: min(200px, 38vw);
+  max-width: min(240px, 44vw);
   object-fit: contain;
 }
 
 .site-footer__partners-name {
   font-weight: 800;
   font-size: 12px;
-  color: #f4ecd8;
+  color: #0e0b07;
   padding: 8px 14px;
-  border: 2px solid #d4b400;
+  border: 2px solid #0e0b07;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -982,8 +991,9 @@
 }
 
 .site-footer__legal {
-  border-top: 2px solid #d4b400;
-  padding-top: 20px;
+  border-top: none;
+  margin-top: clamp(24px, 4vw, 32px);
+  padding-top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1274,9 +1284,19 @@
     margin-bottom: 32px;
   }
 
+  .site-footer__partners {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .site-footer__partners-list {
+    flex: 1 1 auto;
+    gap: 20px 28px;
+  }
+
   .site-footer__partners-logo {
-    height: clamp(40px, 11vw, 56px);
-    max-width: min(160px, 42vw);
+    height: clamp(48px, 14vw, 64px);
+    max-width: min(180px, 46vw);
   }
 
   .newsletter-form {

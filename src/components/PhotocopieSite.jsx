@@ -413,7 +413,7 @@ function Footer({ partners }) {
 
         {partners.length > 0 && (
           <div className="site-footer__partners">
-            <h4>// AVEC :</h4>
+            <span className="site-footer__partners-label">// avec</span>
             <div className="site-footer__partners-list">
               {partners.map((partner) => {
                 const content = partner.logo ? (
