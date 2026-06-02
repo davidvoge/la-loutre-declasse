@@ -593,8 +593,8 @@ export default function PhotocopieSite() {
       <Lineup lineup={lineup} onOpenArtist={setOpenArtist} />
       <Timetable lineup={lineup} onOpenArtist={setOpenArtist} />
       <Billetterie />
-      <AppelExposants />
       <Infos />
+      <AppelExposants />
       <Footer partners={partners} />
       <ArtistModal artistId={openArtist} lineup={lineup} onClose={() => setOpenArtist(null)} />
     </div>
