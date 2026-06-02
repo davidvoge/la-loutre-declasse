@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import './TripEasterEgg.css';
 
 const CALM_DURATION_MS = 3000;
+const TAB_RETURN_TRIP_MS = 5000;
 const PINCH_STOP_RATIO = 0.12;
 
 function touchDistance(touches) {
@@ -62,7 +63,8 @@ export function useTripEasterEgg() {
     setIsTripping(false);
   }, [clearTripTimeout]);
 
-  const triggerTrip = useCallback(() => {
+  const triggerTrip = useCallback((options = {}) => {
+    const { autoStopMs } = options;
     if (isTripping || calmMessage) return;
 
     if (prefersReducedMotion) {
@@ -74,8 +76,38 @@ export function useTripEasterEgg() {
       return;
     }
 
+    clearTripTimeout();
     setIsTripping(true);
+
+    if (autoStopMs) {
+      timeoutRef.current = setTimeout(() => {
+        setIsTripping(false);
+        timeoutRef.current = null;
+      }, autoStopMs);
+    }
   }, [isTripping, calmMessage, prefersReducedMotion, clearTripTimeout]);
+
+  const triggerTripRef = useRef(triggerTrip);
+  triggerTripRef.current = triggerTrip;
+
+  useEffect(() => {
+    let tabWasHidden = false;
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        tabWasHidden = true;
+        return;
+      }
+
+      if (document.visibilityState === 'visible' && tabWasHidden) {
+        tabWasHidden = false;
+        triggerTripRef.current({ autoStopMs: TAB_RETURN_TRIP_MS });
+      }
+    };
+
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange);
+  }, []);
 
   useEffect(() => {
     if (!isTripping) return undefined;
