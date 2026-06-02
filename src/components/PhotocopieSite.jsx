@@ -10,6 +10,7 @@ import {
 import { useArtists } from '../hooks/useArtists';
 import { usePartners } from '../hooks/usePartners';
 import { ICON_MAP, IconInsta, IconMail } from './icons';
+import { CalmTripToast, TripEasterEggLayer, useTripEasterEgg } from './TripEasterEgg.jsx';
 import { CREME, JAUNE, NOIR, NOISE, ROUGE, Tape } from './theme.jsx';
 import './PhotocopieSite.css';
 
@@ -17,7 +18,7 @@ function scrollTo(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 }
 
-function Header() {
+function Header({ onTripTrigger }) {
   const anchorLinks = [
     { label: 'PROG', id: 'programmation' },
     { label: 'TICKETS', id: 'billetterie' },
@@ -29,8 +30,35 @@ function Header() {
   return (
     <header className="site-header">
       <div className="site-container site-header__inner">
-        <a href="#hero" className="site-header__brand" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }}>
-          <div className="site-header__logo">
+        <a
+          href="#hero"
+          className="site-header__brand"
+          onClick={(e) => {
+            e.preventDefault();
+            if (!window.matchMedia('(max-width: 899px)').matches) {
+              scrollTo('hero');
+            }
+          }}
+        >
+          <div
+            className="site-header__logo site-header__logo--trip-trigger"
+            onClick={(e) => {
+              if (window.matchMedia('(max-width: 899px)').matches) {
+                e.preventDefault();
+                e.stopPropagation();
+                onTripTrigger?.();
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                if (window.matchMedia('(max-width: 899px)').matches) {
+                  e.preventDefault();
+                  onTripTrigger?.();
+                }
+              }
+            }}
+            role="presentation"
+          >
             <img src="/assets/logo-mark.png" alt="La Loutre déclasse" />
           </div>
           <div className="site-header__titles">
@@ -80,7 +108,7 @@ const TICKER_ITEMS = [
 
 const TICKER_TEXT = `${TICKER_ITEMS.map((item) => `★ ${item}`).join(' ')} `;
 
-function Hero() {
+function Hero({ onTripTrigger }) {
   return (
     <section id="hero" className="hero" style={{ backgroundImage: NOISE }}>
       <div className="site-container hero__inner">
@@ -111,7 +139,10 @@ function Hero() {
           <div className="hero__note-inner">
             &ldquo;ce festival n&apos;a pas de tête d&apos;affiche.
             <br />
-            tous les noms sont gros.&rdquo; — la loutre
+            tous les noms sont gros.&rdquo;{' '}
+            <button type="button" className="hero__loutre-trigger" onClick={onTripTrigger}>
+              — la loutre
+            </button>
             <Tape w={70} rot={-12} style={{ top: -10, left: '50%', marginLeft: -35 }} color={ROUGE} />
           </div>
         </div>
@@ -585,11 +616,12 @@ export default function PhotocopieSite() {
   const [openArtist, setOpenArtist] = useState(null);
   const { lineup } = useArtists();
   const { partners } = usePartners();
+  const { isTripping, triggerTrip, calmMessage } = useTripEasterEgg();
 
   return (
-    <div className="photocopie-site">
-      <Header />
-      <Hero />
+    <div className={`photocopie-site${isTripping ? ' trip-active' : ''}`}>
+      <Header onTripTrigger={triggerTrip} />
+      <Hero onTripTrigger={triggerTrip} />
       <Lineup lineup={lineup} onOpenArtist={setOpenArtist} />
       <Timetable lineup={lineup} onOpenArtist={setOpenArtist} />
       <Billetterie />
@@ -597,6 +629,8 @@ export default function PhotocopieSite() {
       <AppelExposants />
       <Footer partners={partners} />
       <ArtistModal artistId={openArtist} lineup={lineup} onClose={() => setOpenArtist(null)} />
+      <TripEasterEggLayer isTripping={isTripping} />
+      <CalmTripToast visible={calmMessage} />
     </div>
   );
 }
