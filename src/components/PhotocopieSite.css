@@ -610,6 +610,11 @@
   padding: clamp(70px, 8vw, 100px) 0;
 }
 
+.appel-exposants .section-intro__title,
+.appel-exposants .section-intro__title--yellow {
+  color: #ffe600;
+}
+
 .appel-exposants__kicker {
   margin: 10px 0 0;
   font-family: Inter, sans-serif;

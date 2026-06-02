@@ -26,7 +26,8 @@
   color: #e33b1f;
 }
 
-.section-intro__title {
+.exposants-page .section-intro__title,
+.exposants-page .section-intro__title--yellow {
   font-family: "Arial Black", Impact, sans-serif;
   font-weight: 900;
   font-size: clamp(44px, 6.5vw, 88px);

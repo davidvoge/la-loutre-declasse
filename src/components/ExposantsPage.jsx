@@ -85,7 +85,7 @@ export default function ExposantsPage() {
             <div className="section-intro__eyebrow section-intro__eyebrow--red">
               // APPEL À EXPOSANTS
             </div>
-            <h1 className="section-intro__title">CANDIDATURE STAND.</h1>
+            <h1 className="section-intro__title section-intro__title--yellow">CANDIDATURE STAND.</h1>
             <p className="exposants-page__intro">
               {EXPOSANT_PRICE_PER_METER} €/m · {EXPOSANT_PRICE_3M} € les 3 m · {EXPOSANT_MAX_METERS} m
               maximum
