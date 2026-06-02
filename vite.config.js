@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
+import { sendExposantApplication } from './lib/sendExposantApplication.js';
 import { subscribeToNewsletter } from './lib/subscribeNewsletter.js';
 import { BILLETTERIE_URL } from './src/data/festival.js';
 
@@ -62,6 +63,36 @@ export default defineConfig(({ mode }) => {
             } catch (error) {
               const message = error instanceof Error ? error.message : 'Inscription impossible';
               const status = message === 'Adresse e-mail invalide' ? 400 : 502;
+              res.statusCode = status;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ error: message }));
+            }
+          });
+
+          server.middlewares.use('/api/exposants', async (req, res, next) => {
+            if (req.method !== 'POST') {
+              res.statusCode = 405;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ error: 'Method not allowed' }));
+              return;
+            }
+
+            try {
+              const body = await readJsonBody(req);
+              await sendExposantApplication(body, env);
+              res.statusCode = 200;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ ok: true }));
+            } catch (error) {
+              const message = error instanceof Error ? error.message : 'Envoi impossible';
+              const clientErrors = [
+                'Le prénom est requis',
+                'Le nom est requis',
+                'Adresse e-mail invalide',
+                'Le nom du stand est requis',
+                'Nombre de mètres linéaires invalide',
+              ];
+              const status = clientErrors.includes(message) ? 400 : 502;
               res.statusCode = status;
               res.setHeader('Content-Type', 'application/json');
               res.end(JSON.stringify({ error: message }));

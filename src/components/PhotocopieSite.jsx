@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   BILLETTERIE_URL,
   DAYS,
+  EXPOSANTS_SECTION,
   INFOS,
   parseHourSort,
 } from '../data/festival';
@@ -16,7 +18,7 @@ function scrollTo(id) {
 }
 
 function Header() {
-  const links = [
+  const anchorLinks = [
     { label: 'PROG', id: 'programmation' },
     { label: 'TICKETS', id: 'billetterie' },
     { label: 'INFOS', id: 'infos' },
@@ -37,7 +39,7 @@ function Header() {
           </div>
         </a>
         <nav className="site-header__nav" aria-label="Navigation principale">
-          {links.map(({ label, id }) => (
+          {anchorLinks.map(({ label, id }) => (
             <a
               key={label}
               href={`#${id}`}
@@ -50,6 +52,9 @@ function Header() {
               {label}
             </a>
           ))}
+          <Link to="/exposants" className="site-header__link">
+            EXPOSANTS
+          </Link>
           <a
             href={BILLETTERIE_URL}
             target="_blank"
@@ -221,6 +226,32 @@ function Timetable({ lineup, onOpenArtist }) {
         {DAYS.map((d) => (
           <DayBlock key={d.id} day={d} lineup={lineup} onOpenArtist={onOpenArtist} />
         ))}
+      </div>
+    </section>
+  );
+}
+
+function AppelExposants() {
+  const { eyebrow, title, lede, cta } = EXPOSANTS_SECTION;
+
+  return (
+    <section id="exposants" className="appel-exposants" style={{ backgroundImage: NOISE }}>
+      <div className="site-container site-container--narrow">
+        <div className="section-intro">
+          <div className="section-intro__eyebrow section-intro__eyebrow--red">{eyebrow}</div>
+          <h2 className="section-intro__title section-intro__title--yellow">{title}</h2>
+          <p className="appel-exposants__kicker">7 €/m · 20 € les 3 m · 6 m max</p>
+        </div>
+
+        <div className="appel-exposants__card">
+          <div className="appel-exposants__badge">MARCHÉ DU FESTIVAL</div>
+          <div>
+            <p className="appel-exposants__lede">{lede}</p>
+          </div>
+          <Link to="/exposants" className="appel-exposants__cta">
+            {cta}
+          </Link>
+        </div>
       </div>
     </section>
   );
@@ -562,6 +593,7 @@ export default function PhotocopieSite() {
       <Lineup lineup={lineup} onOpenArtist={setOpenArtist} />
       <Timetable lineup={lineup} onOpenArtist={setOpenArtist} />
       <Billetterie />
+      <AppelExposants />
       <Infos />
       <Footer partners={partners} />
       <ArtistModal artistId={openArtist} lineup={lineup} onClose={() => setOpenArtist(null)} />

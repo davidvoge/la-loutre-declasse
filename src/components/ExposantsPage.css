@@ -1,0 +1,306 @@
+.site-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-left: clamp(20px, 3vw, 28px);
+  padding-right: clamp(20px, 3vw, 28px);
+}
+
+.site-container--narrow {
+  max-width: 1100px;
+}
+
+.section-intro {
+  margin-bottom: 50px;
+}
+
+.section-intro__eyebrow {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: #d4b400;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-intro__eyebrow--red {
+  color: #e33b1f;
+}
+
+.section-intro__title {
+  font-family: "Arial Black", Impact, sans-serif;
+  font-weight: 900;
+  font-size: clamp(44px, 6.5vw, 88px);
+  line-height: 0.85;
+  color: #ffe600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+}
+
+.exposants-page {
+  min-height: 100vh;
+  background-color: #0e0b07;
+  color: #f4ecd8;
+}
+
+.exposants-page__header {
+  border-bottom: 3px solid #ffe600;
+  padding: 16px 0;
+}
+
+.exposants-page__header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.exposants-page__back {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffe600;
+  text-decoration: none;
+}
+
+.exposants-page__back:hover {
+  text-decoration: underline;
+}
+
+.exposants-page__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Arial Black", Impact, sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #ffe600;
+}
+
+.exposants-page__main {
+  padding: clamp(48px, 6vw, 80px) 0 clamp(64px, 8vw, 100px);
+}
+
+.exposants-page__intro {
+  margin: 10px 0 0;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: rgba(244, 236, 216, 0.75);
+}
+
+.exposants-form {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.exposants-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.exposants-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exposants-form__field span {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d4b400;
+}
+
+.exposants-form__field input {
+  padding: 14px 16px;
+  border: 3px solid #ffe600;
+  background: transparent;
+  color: #f4ecd8;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+}
+
+.exposants-form__field input:focus {
+  background: rgba(255, 230, 0, 0.08);
+}
+
+.exposants-form__field input:disabled {
+  opacity: 0.6;
+}
+
+.exposants-form__meters {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.exposants-form__meters legend {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d4b400;
+  margin-bottom: 12px;
+}
+
+.exposants-form__meters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.exposants-form__meter-option {
+  cursor: pointer;
+}
+
+.exposants-form__meter-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.exposants-form__meter-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 10px;
+  border: 3px solid rgba(255, 230, 0, 0.45);
+  font-family: "Arial Black", Impact, sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  color: #ffe600;
+  text-align: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.exposants-form__meter-price {
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f4ecd8;
+}
+
+.exposants-form__meter-option input:checked + .exposants-form__meter-label {
+  background: #ffe600;
+  color: #0e0b07;
+  border-color: #ffe600;
+}
+
+.exposants-form__meter-option input:checked + .exposants-form__meter-label .exposants-form__meter-price {
+  color: rgba(14, 11, 7, 0.7);
+}
+
+.exposants-form__meter-option:hover .exposants-form__meter-label {
+  border-color: #ffe600;
+}
+
+.exposants-price {
+  background: #ffe600;
+  color: #0e0b07;
+  padding: 20px 24px;
+  border: 3px solid #ffe600;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+}
+
+.exposants-price__label {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.exposants-price__value {
+  font-family: "Arial Black", Impact, sans-serif;
+  font-weight: 900;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1;
+}
+
+.exposants-price__detail {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.exposants-form__submit {
+  margin-top: 8px;
+  background: #ff2d2d;
+  color: #ffe600;
+  padding: 18px 28px;
+  border: 3px solid #ff2d2d;
+  cursor: pointer;
+  font-family: "Arial Black", Impact, sans-serif;
+  font-weight: 900;
+  font-size: clamp(16px, 2vw, 22px);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.exposants-form__submit:hover:not(:disabled) {
+  background: #ffe600;
+  color: #0e0b07;
+  border-color: #ffe600;
+}
+
+.exposants-form__submit:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.exposants-form__status {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.exposants-form__status--success {
+  color: #ffe600;
+}
+
+.exposants-form__status--error {
+  color: #ff8a8a;
+}
+
+.exposants-page__footer {
+  padding: 24px 0;
+  border-top: 3px solid #ffe600;
+}
+
+.exposants-page__footer p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .exposants-form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .exposants-form__meters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

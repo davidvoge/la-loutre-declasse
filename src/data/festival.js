@@ -237,3 +237,14 @@ export const FALLBACK_PARTNERS = [
 ];
 
 export const BILLETTERIE_URL = 'https://www.helloasso.com/associations/convergence-des-loutres/evenements/prevente-loutre-declasse';
+
+export const EXPOSANT_MAX_METERS = 6;
+export const EXPOSANT_PRICE_PER_METER = 7;
+export const EXPOSANT_PRICE_3M = 20;
+
+export const EXPOSANTS_SECTION = {
+  eyebrow: '// APPEL À EXPOSANTS',
+  title: 'POSE TON STAND.',
+  lede: 'Artisans, créateur·rice·s, producteur·rice·s : réserve ta place sur le marché du festival. Emplacement en mètres linéaires, jusqu’à 6 m.',
+  cta: 'CANDIDATER →',
+};
