@@ -1,13 +1,12 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ExposantsPage from './components/ExposantsPage';
-import PhotocopieSite from './components/PhotocopieSite';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import MerciPage from './components/MerciPage';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<PhotocopieSite />} />
-        <Route path="/exposants" element={<ExposantsPage />} />
+        <Route path="/" element={<MerciPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,12 +2,12 @@
   "redirects": [
     {
       "source": "/presse",
-      "destination": "https://drive.google.com/drive/folders/19Alatmqgz_Zl52zddsh1MOGCb5gMFapr?usp=sharing",
+      "destination": "/",
       "permanent": false
     },
     {
       "source": "/billeterie",
-      "destination": "https://www.helloasso.com/associations/convergence-des-loutres/evenements/prevente-loutre-declasse",
+      "destination": "/",
       "permanent": false
     }
   ],
