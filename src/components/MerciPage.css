@@ -77,37 +77,29 @@
   margin: 0 0 36px;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: center;
-  gap: 8px 10px;
+  align-items: baseline;
+  gap: 6px 8px;
   max-width: 560px;
 }
 
 .merci-page__list li {
   font-family: 'Arial Black', Impact, sans-serif;
   font-weight: 900;
-  font-size: clamp(18px, 4.5vw, 28px);
+  font-size: clamp(13px, 3vw, 17px);
   text-transform: uppercase;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   color: #0e0b07;
   background: #f4ecd8;
-  padding: 4px 12px;
+  padding: 3px 10px;
+  white-space: nowrap;
   transform: rotate(-1deg);
 }
 
 .merci-page__list li:nth-child(even) {
   background: #ffe600;
   transform: rotate(1.2deg);
-}
-
-.merci-page__lede {
-  font-family: 'Lora', Georgia, serif;
-  font-style: italic;
-  font-size: 18px;
-  line-height: 1.65;
-  color: #f4ecd8;
-  max-width: 520px;
-  margin: 0 0 28px;
 }
 
 .merci-page__next {

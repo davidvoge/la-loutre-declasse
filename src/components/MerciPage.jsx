@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { IconFacebook, IconInsta, IconMail } from './icons';
-import { CREME, JAUNE, NOIR, NOISE, ROUGE, Tape } from './theme.jsx';
+import { CREME, JAUNE, NOIR, NOISE, ROUGE } from './theme.jsx';
 import './MerciPage.css';
 
 const MERCIS = [
@@ -55,21 +55,13 @@ export default function MerciPage() {
 
         <div className="merci-page__eyebrow">// C&apos;EST FINI POUR CETTE ANNÉE</div>
 
-        <h1 className="merci-page__title">
-          MERCI.
-          <Tape w={90} rot={-9} style={{ top: -14, left: '50%', marginLeft: -45 }} color={ROUGE} />
-        </h1>
+        <h1 className="merci-page__title">MERCI.</h1>
 
         <ul className="merci-page__list">
           {MERCIS.map((m) => (
             <li key={m}>{m}</li>
           ))}
         </ul>
-
-        <p className="merci-page__lede">
-          Trois jours à Loguivy-Plougras, prix libre, camping ouvert, cantine sur le feu.
-          Sans vous, rien de tout ça. On a déclassé la loutre ensemble.
-        </p>
 
         <p className="merci-page__next">À l&apos;année prochaine. 🦦</p>
 
