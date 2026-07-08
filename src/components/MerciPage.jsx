@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IconInsta, IconMail } from './icons';
+import { IconFacebook, IconInsta, IconMail } from './icons';
 import { CREME, JAUNE, NOIR, NOISE, ROUGE, Tape } from './theme.jsx';
 import './MerciPage.css';
 
@@ -110,8 +110,21 @@ export default function MerciPage() {
           <a href="mailto:contact@laconvergencedesloutres.fr" aria-label="E-mail">
             <IconMail size={18} color={CREME} />
           </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <a
+            href="https://www.instagram.com/convergencedesloutres/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
             <IconInsta size={18} color={CREME} />
+          </a>
+          <a
+            href="https://www.facebook.com/p/La-Convergence-des-Loutres-61556130330890/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <IconFacebook size={18} color={CREME} />
           </a>
         </div>
 

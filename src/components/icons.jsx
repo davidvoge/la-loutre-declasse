@@ -50,6 +50,14 @@ export const IconInsta = ({ size = 18, color }) => (
   />
 );
 
+export const IconFacebook = ({ size = 18, color }) => (
+  <Icon
+    size={size}
+    color={color}
+    d="M15 4h-2a4 4 0 00-4 4v3H6v3h3v7h3v-7h3l1-3h-4V8a1 1 0 011-1h2V4z"
+  />
+);
+
 export const ICON_MAP = {
   car: IconCar,
   tent: IconTent,
